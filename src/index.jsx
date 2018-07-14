@@ -1,5 +1,15 @@
 import React from 'react'
 import {render} from 'react-dom'
-import AjaxRequest from './components/ajaxRequest.jsx'
+import {Provider} from 'react-redux'
+import ItemList from './components/ItemList.jsx'
+import configureStore from './store/configureStore'
+import './scss/index.scss'
 
-render(<AjaxRequest />, document.getElementById('container'))
+const store = configureStore(); // You can also pass in an initialState here
+
+render(
+    <Provider store={store}>
+        <ItemList />
+    </Provider>,
+    document.getElementById('container')
+)
