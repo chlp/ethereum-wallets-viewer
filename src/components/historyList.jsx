@@ -1,11 +1,11 @@
 import React from 'react'
 
-export default function ListLi (props) {
+export default function HistoryList(props) {
     return (
         <li>
-            <p className="date">{props.item.date}</p>
-            <p className="lb">{`${digitNumber(props.item.balance)} Ether`}</p>
-            <p className="difference">{difference(props.item.balance,props.balance)}</p>
+            <p className="date">{`${(new Date(props.item.date)).getHours()}:${(new Date(props.item.date)).getMinutes()}`}</p>
+            <p className="lb">{`${digitNumber(props.balance)} Ether`}</p>
+            <p className="difference">{difference(props.lastBalance, props.balance)}</p>
         </li>
     )
 }
@@ -40,11 +40,11 @@ return str;
 
 function difference(lastB,newB) {
     let d = newB - lastB;
-    if (d == 0) {
-        return "The balance hasn't changed";
-    } else if (d < 0) {
+    if (d < 0) {
         let str = "" + d;
         let result = digitNumber(str.slice(1));
         return ("- " + result);
-    } else return `+ ${digitNumber(""+d)}`;
+    } else if (d > 0) {
+        return `+ ${digitNumber(""+d)}`
+    };
 }

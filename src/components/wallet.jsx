@@ -1,18 +1,38 @@
 import React, { Component } from 'react'
-import GetListLi from './getListLi.jsx'
+import HiddenBlock from './hiddenBlock.jsx'
+import {connect} from 'react-redux'
+import {itemsFetchData, itemsFirstLoading, itemsHasErrored} from '../redux/actions/items'
 
-export default class Wallet extends Component {
+class Wallet extends Component {
     constructor(props) {
         super(props)
 
         this.state = {
             isOpen: false,
             class_s: 'wallet wallet_size_s',
-            class_l: 'wallet wallet_size_l'
+            class_l: 'wallet wallet_size_l',
+            elapsed: 0
         }
     }
 
+    componentWillUnmount() {
+        clearInterval(this.timer);
+    }
+
+    componentDidMount() {
+        this.timer = setInterval(this.tick, 1000);
+    }
+
+    tick = () => {
+        let arr = this.props.item.history
+        if(this.state.elapsed >= 300) {
+            this.fetchRequest(this.props.item.account)
+            this.setState({elapsed: 0})
+        } else this.setState({elapsed: Math.round((Date.now() - arr[arr.length-1].date)/1000)});
+    }
+
     render() {
+        ///onsole.log(props);
         const {isOpen} = this.state
         const {item} = this.props
 
@@ -22,7 +42,7 @@ export default class Wallet extends Component {
                 <div className="part_one">
                 <div className="balance">
                     <span className="close">Close</span>
-                    <span className="text">Ether balance</span>
+                    <span className="text"> Ether balance</span>
                     <p>{this.digitNumber(item.balance)}</p>
                 </div>
                 <div className="account">
@@ -44,7 +64,11 @@ export default class Wallet extends Component {
 
     getMore() {
         if(!this.state.isOpen) return null
-        return <GetListLi items = {this.props.item} />
+        return <HiddenBlock items = {this.props.item} />
+    }
+
+    fetchRequest = wallet => {
+      this.props.fetchData(`https://api.etherscan.io/api?module=account&action=balancemulti&address=${wallet}&tag=latest`)
     }
 
     toggleOpen() {
@@ -81,3 +105,19 @@ export default class Wallet extends Component {
     return str;
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        items: state.items,
+        hasErrored: state.itemsHasErrored,
+        isLoading: state.itemsFirstLoading
+    }
+}
+
+const mapDispatchProps = (dispatch) => {
+    return {
+        fetchData: (url) => dispatch(itemsFetchData(url))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchProps)(Wallet);

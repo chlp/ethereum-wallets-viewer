@@ -1,15 +1,15 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
-import ItemList from './components/ItemList.jsx'
+import Form from './components/form.jsx'
 import configureStore from './redux/store/configureStore'
 import './scss/index.scss'
 
 const store = configureStore(); // You can also pass in an initialState here
 
-render(
+render (
     <Provider store={store}>
-        <ItemList />
+        <Form />
     </Provider>,
     document.getElementById('container')
 )

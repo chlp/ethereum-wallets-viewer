@@ -30,6 +30,7 @@ export function itemsFetchData(url) {
         })
         .then((response) => response.json())
         .then((items) => {
+            dispatch(itemsHasErrored(false))
             let date = new Date()
             items.result.forEach((item) => {dispatch(itemsFetchDataSuccess({
                 account: item.account,
@@ -37,7 +38,7 @@ export function itemsFetchData(url) {
                 history: [
                     {
                         balance: item.balance,
-                        date: `Update Time ${date.getHours()}:${date.getMinutes()}`
+                        date: Date.now()
                     }
                 ]
             }))})

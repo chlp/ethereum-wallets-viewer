@@ -22,6 +22,7 @@ function searchAccount(state, action) {
 };
 
 function addWallet(state, action, pos) {
+
     if(state[pos].balance == action.item.balance) {
         let dataRefresh = Object.assign({}, state[pos], {
             history: [
@@ -42,19 +43,25 @@ function addWallet(state, action, pos) {
     } else {
         let newObj = Object.assign({}, state[pos], {
             balance: action.item.balance,
-            history: [
-                ...state[pos].history,
-                {
-                    balance: action.item.balance,
-                    date: action.item.history[0].date
-                }
-            ]
+            history: checkHistory(state[pos].history, action, pos)
         });
-        console.log("hello");
+
         return state.map((item) => {
             if(item.account === action.item.account) {
                 return Object.assign({}, item, newObj);
             } else return item
         });
     }
+}
+
+function checkHistory(history, action, pos) {
+    if(history.length <= 1) {
+        return ([
+            ...history,
+            {
+                balance: action.item.balance,
+                date: action.item.history[0].date
+            }
+        ])
+    } else return [history[history.length-1]]
 }
