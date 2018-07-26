@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import HiddenBlock from './hiddenBlock.jsx'
 import {connect} from 'react-redux'
-import {itemsFetchData, itemsFirstLoading, itemsHasErrored} from '../redux/actions/items'
+import {itemsFetchData, itemsFirstLoading, itemsHasErrored, removeWallet} from '../redux/actions/items'
 
 class Wallet extends Component {
     constructor(props) {
@@ -25,14 +25,13 @@ class Wallet extends Component {
 
     tick = () => {
         let arr = this.props.item.history
-        if(this.state.elapsed >= 300) {
+        if(this.state.elapsed >= 60) {
             this.fetchRequest(this.props.item.account)
             this.setState({elapsed: 0})
         } else this.setState({elapsed: Math.round((Date.now() - arr[arr.length-1].date)/1000)});
     }
 
     render() {
-        ///onsole.log(props);
         const {isOpen} = this.state
         const {item} = this.props
 
@@ -41,8 +40,8 @@ class Wallet extends Component {
             <div className={isOpen ? this.state.class_l : this.state.class_s}>
                 <div className="part_one">
                 <div className="balance">
-                    <span className="close">Close</span>
-                    <span className="text"> Ether balance</span>
+                    <span className="close" onClick = {this.removeBlock}>Close</span>
+                    <span className="text">Ether balance</span>
                     <p>{this.digitNumber(item.balance)}</p>
                 </div>
                 <div className="account">
@@ -77,6 +76,10 @@ class Wallet extends Component {
         })
     }
 
+    removeBlock = () => {
+        this.props.removeWallet(this.props.item.account)
+    }
+
     digitNumber(balance) {
     let correctBalance = balance;
     let correctLength = 19;
@@ -109,14 +112,14 @@ class Wallet extends Component {
 const mapStateToProps = (state) => {
     return {
         items: state.items,
-        hasErrored: state.itemsHasErrored,
-        isLoading: state.itemsFirstLoading
+        hasErrored: state.itemsHasErrored
     }
 }
 
 const mapDispatchProps = (dispatch) => {
     return {
-        fetchData: (url) => dispatch(itemsFetchData(url))
+        fetchData: (url) => dispatch(itemsFetchData(url)),
+        removeWallet: (wallet) => dispatch(removeWallet(wallet))
     }
 }
 

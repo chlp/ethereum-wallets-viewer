@@ -3,11 +3,26 @@ import React from 'react'
 export default function HistoryList(props) {
     return (
         <li>
-            <p className="date">{`${(new Date(props.item.date)).getHours()}:${(new Date(props.item.date)).getMinutes()}`}</p>
+            <p className="date">{`${correctDate(props.item.date)}`}</p>
             <p className="lb">{`${digitNumber(props.balance)} Ether`}</p>
             <p className="difference">{difference(props.lastBalance, props.balance)}</p>
         </li>
     )
+}
+
+function correctDate(milliseconds) {
+    let date = new Date(milliseconds)
+
+    let options = {
+        month: 'long',
+        day: 'numeric',
+        timezone: 'UTC',
+        hour: 'numeric',
+        minute: 'numeric',
+        hour12: false
+    }
+
+    return date.toLocaleString("en-US", options)
 }
 
 function digitNumber(balance) {

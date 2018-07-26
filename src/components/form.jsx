@@ -4,17 +4,17 @@ import {itemsFetchData, itemsFirstLoading, itemsHasErrored} from '../redux/actio
 import WalletBlock from './walletBlock.jsx'
 
 class Form extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-        value: '',
-        itemsLength: false
+    constructor(props) {
+        super(props)
+        this.state = {
+            value: '',
+            itemsLength: false
+        }
     }
-  }
 
-  handleChange = event => {
-    this.setState({value: event.target.value})
-  }
+    handleChange = event => {
+        this.setState({value: event.target.value})
+    }
 
   handleSubmit = event => {
     this.fetchRequest(this.container.value)
@@ -44,7 +44,7 @@ class Form extends Component {
   }
 
   walletsRender = () => {
-    if(!this.state.itemsLength) return null;
+    //if(!this.state.itemsLength) return null;
     return (
         <WalletBlock items = {this.props.items}/>
     )
@@ -62,8 +62,7 @@ class Form extends Component {
 const mapStateToProps = (state) => {
     return {
         items: state.items,
-        hasErrored: state.itemsHasErrored,
-        isLoading: state.itemsFirstLoading
+        hasErrored: state.itemsHasErrored
     }
 }
 

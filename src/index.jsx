@@ -5,7 +5,7 @@ import Form from './components/form.jsx'
 import configureStore from './redux/store/configureStore'
 import './scss/index.scss'
 
-const store = configureStore(); // You can also pass in an initialState here
+const store = configureStore();
 
 render (
     <Provider store={store}>

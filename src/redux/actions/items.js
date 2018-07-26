@@ -12,6 +12,13 @@ export function itemsHasErrored(bool) {
     };
 }
 
+export function removeWallet(wallet) {
+    return {
+        type: 'REMOVE_WALLET',
+        wallet
+    };
+}
+
 export function itemsFetchDataSuccess(item) {
     return { type: 'ITEMS_FETCH_DATA_SUCCESS', item };
 }
