@@ -25,7 +25,7 @@ class Wallet extends Component {
 
     tick = () => {
         let arr = this.props.item.history
-        if(this.state.elapsed >= 60) {
+        if(this.state.elapsed >= 300) {
             this.fetchRequest(this.props.item.account)
             this.setState({elapsed: 0})
         } else this.setState({elapsed: Math.round((Date.now() - arr[arr.length-1].date)/1000)});
@@ -50,7 +50,7 @@ class Wallet extends Component {
                         <p>{item.account}</p>
                     </div>
                     <div className="button">
-                        <p onClick = {this.toggleOpen.bind(this)}>
+                        <p onClick = {this.toggleOpen}>
                             {isOpen ? 'Less' : 'More'}
                         </p>
                     </div>
@@ -61,16 +61,16 @@ class Wallet extends Component {
         )
     }
 
-    getMore() {
+    getMore = () => {
         if(!this.state.isOpen) return null
         return <HiddenBlock items = {this.props.item} />
     }
 
     fetchRequest = wallet => {
-      this.props.fetchData(`https://api.etherscan.io/api?module=account&action=balancemulti&address=${wallet}&tag=latest`)
+        this.props.fetchData(`https://api.etherscan.io/api?module=account&action=balancemulti&address=${wallet}&tag=latest`)
     }
 
-    toggleOpen() {
+    toggleOpen = () => {
         this.setState({
             isOpen: !this.state.isOpen
         })
@@ -80,32 +80,32 @@ class Wallet extends Component {
         this.props.removeWallet(this.props.item.account)
     }
 
-    digitNumber(balance) {
-    let correctBalance = balance;
-    let correctLength = 19;
+    digitNumber = (balance) => {
+        let correctBalance = balance;
+        let correctLength = 19;
 
-    if(correctBalance == 0) {
-        return 0;
-    };
+        if(correctBalance == 0) {
+            return 0;
+        };
 
-    if(correctBalance.length < correctLength) {
-        let difference = correctLength - correctBalance.length;
-        correctBalance = this.addZero(difference) + correctBalance;
-    };
+        if(correctBalance.length < correctLength) {
+            let difference = correctLength - correctBalance.length;
+            correctBalance = this.addZero(difference) + correctBalance;
+        };
 
-    correctBalance = correctBalance.split("").reverse();
+        correctBalance = correctBalance.split("").reverse();
 
-    correctBalance = [].concat(correctBalance.slice(0, correctLength - 1), '.', correctBalance.slice(correctLength-1));
-    correctBalance = ((correctBalance.reverse()).join('')).replace(/(\d)(?=(\d\d\d)+([^\d]))/g, '$1,');
-    return correctBalance;
+        correctBalance = [].concat(correctBalance.slice(0, correctLength - 1), '.', correctBalance.slice(correctLength-1));
+        correctBalance = ((correctBalance.reverse()).join('')).replace(/(\d)(?=(\d\d\d)+([^\d]))/g, '$1,');
+        return correctBalance;
     }
 
-    addZero(count) {
-    let str = "";
-    for(let start = 0; start < count; start++) {
-        str += 0;
-    }
-    return str;
+    addZero = (count) => {
+        let str = "";
+        for(let start = 0; start < count; start++) {
+            str += 0;
+        }
+        return str;
     }
 }
 

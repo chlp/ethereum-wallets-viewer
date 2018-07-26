@@ -27,11 +27,11 @@
         &:focus {
             outline: none;
             box-shadow: 0 0.1rem 1rem rgba(0,0,0,0.16);
-            border-bottom: 0.3rem solid rgba(141, 194, 17, 1);
+            border-bottom: 0.3rem solid rgba(36, 131, 154, 0.8);
         }
 
         &:focus:invalid {
-            border-bottom: 0.3rem solid rgba(212, 178, 13, 1);
+            border-bottom: 0.3rem solid rgba($color-white, .1);
         }
     }
 

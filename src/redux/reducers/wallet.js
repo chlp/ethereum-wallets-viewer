@@ -32,7 +32,6 @@ function addWallet(state, action, pos) {
         let dataRefresh = Object.assign({}, state[pos], {
             history: [
                 ...state[pos].history.map((item) => {
-                    console.log(`item.balance = ${item.balance} and action.item.balance = ${action.item.balance}`)
                     if(item.balance == action.item.balance) {
                         return Object.assign({}, item, {
                             date: Date.now()

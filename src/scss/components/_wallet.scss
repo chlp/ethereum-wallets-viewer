@@ -29,8 +29,17 @@
                     position: absolute;
                     top: 1.5rem;
                     right: 0;
-                    font-size: 1.5rem;
+                    font-size: 1.2rem;
                     cursor: pointer;
+                    padding-left: 2rem;
+                    border-radius: 1rem;
+                    text-transform: uppercase;
+                    transition: 0.5s all;
+
+                    &:hover {
+                        padding-right: 2rem;
+                        background-color: rgba(255,255,255,0.2);
+                    }
                 }
 
                 .text {
@@ -82,12 +91,21 @@
                     position: relative;
                     p {
                         position: absolute;
-                        font-size: 1.5rem;
+                        font-size: 1.2rem;
                         top:50%;
                         right: 0;
                         transform: translateY(-50%);
                         cursor: pointer;
                         user-select: none;
+                        padding-left: 2rem;
+                        border-radius: 1rem;
+                        text-transform: uppercase;
+                        transition: 0.5s all;
+
+                        &:hover {
+                            padding-right: 2rem;
+                            background-color: rgba(255,255,255,0.2);
+                        }
                     }
                 }
             }
