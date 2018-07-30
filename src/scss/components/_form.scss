@@ -5,7 +5,7 @@
         grid-template-columns: repeat(auto-fill, minmax(50rem, 1fr));
         grid-template-rows: 6rem;
         grid-gap: 2rem;
-        margin-bottom: 3rem;
+        padding: 2rem;
     }
 
     &__input {
@@ -13,35 +13,36 @@
         grid-column: span 1;
         grid-row: span 1;
         font-size: 1.3rem;
-        font-weight: 400;
+        font-weight: 300;
         letter-spacing: 1px;
         font-family: inherit;
-        color: inherit;
+        color: #0F2445;
         padding: 2rem;
         border-radius: 1rem;
         border-style: none;
-        box-shadow: 0 0.1rem 0.5rem rgba(0,0,0,0.16);
-        background-color: rgba($color-white, .1);
+        background-color: rgba(#F8F8F8, .4);
         transition: all .3s;
+
+        &::placeholder {
+            color: #0F2445;
+        }
 
         &:focus {
             outline: none;
-            box-shadow: 0 0.1rem 1rem rgba(0,0,0,0.16);
-            border-bottom: 0.3rem solid rgba(36, 131, 154, 0.8);
         }
 
         &:focus:invalid {
-            border-bottom: 0.3rem solid rgba($color-white, .1);
+
         }
     }
 
     &__label {
         font-size: 1.2rem;
-        font-weight: 400;
-        margin-top: 6rem;
-        margin-left: 2rem;
+        font-weight: 300;
+        margin-top: 8rem;
+        margin-left: 4rem;
         letter-spacing: 1px;
-        color: rgba(0, 0, 0, 0.5);
+        color: #0F2445;
         transition: all .3s;
         position: absolute;
     }

@@ -27,11 +27,15 @@ class Form extends Component {
     render() {
         return (
             <div>
+            <div className="background-circle_blue"></div>
+            <div className="background-circle_green"></div>
+            <div>
                 <form onSubmit={this.handleSubmit} className="form__group">
                     <input ref = {this.setContainerRef} type="text" autoComplete="off" name="message" className="form__input" placeholder="Enter your wallet address" id="name" value={this.state.value} onChange={this.handleChange} required/>
                     <label htmlFor="name" className="form__label">Enter your wallet address</label>
                 </form>
                 {this.walletsRender()}
+            </div>
             </div>
         );
     }

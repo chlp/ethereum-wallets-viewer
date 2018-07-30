@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import HiddenBlock from './hiddenBlock.jsx'
+import NavBlock from './navBlock.jsx'
 import {connect} from 'react-redux'
 import {itemsFetchData, itemsFirstLoading, itemsHasErrored, removeWallet} from '../redux/actions/items'
 
@@ -36,7 +36,6 @@ class Wallet extends Component {
         const {item} = this.props
 
         return (
-
             <div className={isOpen ? this.state.class_l : this.state.class_s}>
                 <div className="part_one">
                 <div className="balance">
@@ -63,7 +62,7 @@ class Wallet extends Component {
 
     getMore = () => {
         if(!this.state.isOpen) return null
-        return <HiddenBlock items = {this.props.item} />
+        return <NavBlock item = {this.props.item} />
     }
 
     fetchRequest = wallet => {

@@ -19,7 +19,7 @@ const getListI = ({items}) => {
     })
 
     return (
-        <div className="part_two"><hr/><ul>{blocks.reverse()}</ul></div>
+        <ul>{blocks.reverse()}</ul>
     )
 }
 
