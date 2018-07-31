@@ -53,16 +53,15 @@ function difference(lastB,newB) {
 
     let mathDifferenceRes = mathDifference(lastB,newB);
 
-    let digitNumberRes = +digitNumber(mathDifferenceRes.result);
+    let digitNumberRes = digitNumber(mathDifferenceRes.result);
+    let fResult = isNaN(+digitNumberRes) ? digitNumberRes : +digitNumberRes.toString();
 
     if (mathDifferenceRes.negative) {
-        return `- ${digitNumberRes.toString()}`;
+        return `- ${fResult}`;
     } else {
-        return `+ ${digitNumberRes.toString()}`
+        return `+ ${fResult}`
     };
 }
-
-console.log(difference('67863546492809937326909', '68016167552649937326909'))
 
 
 function mathDifference(fNum, sNum) {

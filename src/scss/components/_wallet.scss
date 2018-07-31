@@ -158,7 +158,11 @@
                     padding-right: 1.5rem;
                     cursor: pointer;
                     font-size: 1.5rem;
-                    color: #0F2445;
+                    color: rgba(#0F2445, .6);
+
+                    &:hover {
+                        color: #0F2445;
+                    }
                 }
             }
 
@@ -273,10 +277,6 @@
 
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-
-        .wallet {
-            background-color: orange;
-        }
     }
 };
 
@@ -287,10 +287,6 @@
 
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-
-        .wallet {
-            background-color: pink;
-        }
     }
 }
 
@@ -301,10 +297,6 @@
 
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-
-        .wallet {
-            background-color: green;
-        }
     }
 }
 
@@ -315,9 +307,5 @@
 
     .grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-        .wallet {
-            background-color: red;
-        }
     }
 }
