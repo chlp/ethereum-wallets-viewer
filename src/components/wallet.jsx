@@ -31,6 +31,12 @@ class Wallet extends Component {
         } else this.setState({elapsed: Math.round((Date.now() - arr[arr.length-1].date)/1000)});
     }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        const differentItem = this.props.item !== nextProps.item;
+        const differentIsOpen = this.state.isOpen !== nextState.isOpen;
+        return differentItem || differentIsOpen;
+    }
+
     render() {
         const {isOpen} = this.state
         const {item} = this.props
@@ -66,7 +72,7 @@ class Wallet extends Component {
     }
 
     fetchRequest = wallet => {
-        this.props.fetchData(`https://api.etherscan.io/api?module=account&action=balancemulti&address=${wallet}&tag=latest`)
+        this.props.fetchData(wallet)
     }
 
     toggleOpen = () => {

@@ -5,8 +5,9 @@ export function items(state = [], action) {
             break;
         case 'REMOVE_WALLET':
             return removeWallet(state, action.wallet);
-            //console.log(state);
             break;
+        case 'FETCH_TOKENS_SUCCESS':
+            return addTokens(state, action)
         default:
             return state;
     }
@@ -89,4 +90,37 @@ function removeWallet(state, account) {
         }
     });
     return [].concat(state.slice(0,pos), state.slice(pos+1))
+}
+
+function addTokens(state, action) {
+    if(action.item.status == "0") return state;
+    let pos;
+    let resResult = action.item.result;
+    let dataArr = [];
+    state.forEach((item, i) => {
+        if(item.account == action.item.address) {
+            pos = i;
+        }
+    });
+    resResult.forEach((item, i) => {
+        dataArr.push({
+            contractAddress: item.contractAddress,
+            tokenName: item.tokenName,
+            tokenSymbol: item.tokenSymbol,
+            tokenDecimal: item.tokenDecimal,
+            from: item.from,
+            to: item.to,
+            value: item.value,
+            timeStamp: item.timeStamp,
+            hash: item.hash
+        })
+    });
+
+    return state.map((item, i) => {
+        if(i === pos) {
+            return Object.assign({}, item, {
+                tokens: dataArr
+            });
+        } else return item;
+    })
 }

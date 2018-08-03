@@ -41,7 +41,7 @@ class Form extends Component {
     }
 
     fetchRequest = wallet => {
-        this.props.fetchData(`https://api.etherscan.io/api?module=account&action=balancemulti&address=${wallet}&tag=latest`)
+        this.props.fetchData(wallet)
     }
 
     setContainerRef = ref => {

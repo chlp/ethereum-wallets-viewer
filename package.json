@@ -30,6 +30,7 @@
     "redux-logger": "^3.0.6",
     "sass-loader": "^7.0.3",
     "style-loader": "^0.21.0",
+    "timeago-react": "^2.0.0",
     "uuid": "^3.3.2",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8",

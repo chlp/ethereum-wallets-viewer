@@ -1,9 +1,10 @@
 import React from 'react'
+import TimeAgo from 'timeago-react';
 
 export default function HistoryList(props) {
     return (
         <li>
-            <p className="date">{`${correctDate(props.item.date)}`}</p>
+            <p className="date"><TimeAgo datetime={props.item.date} /></p>
             <p className="lb">{`${digitNumber(props.balance)} Ether`}</p>
             <p className="difference">{difference(`${props.lastBalance}`, `${props.balance}`)}</p>
         </li>
@@ -54,12 +55,11 @@ function difference(lastB,newB) {
     let mathDifferenceRes = mathDifference(lastB,newB);
 
     let digitNumberRes = digitNumber(mathDifferenceRes.result);
-    let fResult = isNaN(+digitNumberRes) ? digitNumberRes : +digitNumberRes.toString();
 
     if (mathDifferenceRes.negative) {
-        return `- ${fResult}`;
+        return `- ${(digitNumberRes.replace(/0*$/,"")).replace(/\.$/,"")}`;
     } else {
-        return `+ ${fResult}`
+        return `+ ${(digitNumberRes.replace(/0*$/,"")).replace(/\.$/,"")}`
     };
 }
 
@@ -68,7 +68,7 @@ function mathDifference(fNum, sNum) {
     let min, max, len, result;
     let negative = false;
 
-    if (fNum > sNum) {
+    if (+fNum > +sNum) {
         min = sNum.split('').reverse();
         max = fNum.split('').reverse();
         negative = true;
