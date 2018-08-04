@@ -24,6 +24,14 @@ class Form extends Component {
         event.preventDefault()
     }
 
+    accountSearch = string => {
+        string = (string.replace(/^ /, '')).replace(/ $/, '');
+        string = (string.replace(/^\D\W*/, '')).replace(/\D\W*$/, '');
+        string = (string.replace(/\D\W/g, ' ')).replace(/  /g, ' ');
+        string = ((string.split(/ /g))).join(',');
+        return string;
+    }
+
     render() {
         return (
             <div>
@@ -41,7 +49,7 @@ class Form extends Component {
     }
 
     fetchRequest = wallet => {
-        this.props.fetchData(wallet)
+        this.props.fetchData(this.accountSearch(wallet))
     }
 
     setContainerRef = ref => {
