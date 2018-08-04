@@ -25,9 +25,8 @@ class Form extends Component {
     }
 
     accountSearch = string => {
-        string = (string.replace(/^ /, '')).replace(/ $/, '');
-        string = (string.replace(/^\D\W*/, '')).replace(/\D\W*$/, '');
-        string = (string.replace(/\D\W/g, ' ')).replace(/  /g, ' ');
+        string = (string.replace(/^[^\w\d]*/, '')).replace(/[^\w\d]*$/, '');
+        string = (string.replace(/[^\w\d]+/g, " ")).replace(/  /g, ' ');
         string = ((string.split(/ /g))).join(',');
         return string;
     }

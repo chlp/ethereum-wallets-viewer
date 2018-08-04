@@ -71,12 +71,13 @@ class NavBlock extends Component {
         let {tokensPage} = this.state
         let {account, tokens} = this.props.item
 
-        if(tokens) {
+        if(tokens.length) {
             let tokensSampleArr = tokens.slice((tokensPage*10)-10, (tokensPage*10));
             return (
                 <TokensBlock tokenList = {tokensSampleArr} account = {account}/>
             )
         } else {
+            console.log("hello")
             return (
                 <li className="info" key = {uuidv4()}>
                     <p>Changes in the tokens will be displayed here.</p>
