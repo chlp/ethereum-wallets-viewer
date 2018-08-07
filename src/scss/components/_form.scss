@@ -53,3 +53,27 @@
         transform: translateY(-1rem);
     }
 }
+
+@media(min-width: 159em) {
+    .form__group {
+        grid-template-columns: repeat(auto-fill, minmax(80rem, 1fr));
+    }
+}
+
+@media(min-width: 110em) and (max-width: 159em) {
+    .form__group {
+        grid-template-columns: repeat(auto-fill, minmax(70rem, 1fr));
+    }
+}
+
+@media(min-width: 20em) and (max-width: 110em) {
+    .form__group {
+        grid-template-columns: repeat(auto-fill, minmax(57rem, 1fr));
+    }
+}
+
+@media(min-width: 37.5em) and (max-width: 85em) {
+    .form__group {
+        grid-template-columns: repeat(auto-fill, minmax(57rem, 1fr));
+    }
+}
