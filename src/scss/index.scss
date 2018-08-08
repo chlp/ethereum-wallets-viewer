@@ -1,7 +1,10 @@
+@import "abstracts/mixins.scss";
 @import "abstracts/variables";
 
 @import "base/base";
 @import "base/typography";
 
-@import "./components/form.scss";
-@import "./components/wallet.scss";
+@import "components/form.scss";
+@import "components/wallet.scss";
+@import "components/partOne.scss";
+@import "components/partTwo.scss";

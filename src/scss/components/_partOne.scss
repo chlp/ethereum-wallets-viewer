@@ -1,0 +1,97 @@
+.part_one {
+    display: grid;
+    grid-template-rows: 3fr 1fr;
+    user-select: none;
+    position: relative;
+
+    .balance {
+        position: relative;
+        overflow: hidden;
+
+        .close {
+            position: absolute;
+            top: 1.5rem;
+            right: 0;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding-left: 2rem;
+            border-radius: 1rem;
+            text-transform: uppercase;
+            transition: 0.5s all;
+
+            &:hover {
+                padding-right: 2rem;
+                color: white;
+                background-color: rgba(red,0.7);
+            }
+        }
+
+        .text {
+            position: absolute;
+            font-size: 2rem;
+            text-transform: uppercase;
+            font-weight: 300;
+            bottom: 0;
+            padding-bottom: 6.3rem;
+        }
+
+        p {
+            position: absolute;
+            left: 0;
+            padding-bottom: 3rem;
+            bottom: 0;
+            font-size: 3.8rem;
+            vertical-align: bottom;
+            line-height: 100%;
+        }
+    }
+
+    .account {
+        display: grid;
+        grid-template-columns: 8fr 1fr;
+
+        .address {
+            position: relative;
+
+            span {
+                position: absolute;
+                font-size: 1.2rem;
+                margin-top: -0.7rem;
+                text-transform: uppercase;
+                font-weight: 300;
+            }
+
+            p {
+                position: absolute;
+                top:50%;
+                transform: translateY(-50%);
+                font-size: 1.5rem;
+                font-weight: 300;
+                user-select: all;
+            }
+        }
+
+        .button {
+            position: relative;
+            p {
+                position: absolute;
+                font-size: 1.2rem;
+                top:50%;
+                right: 0;
+                transform: translateY(-50%);
+                cursor: pointer;
+                user-select: none;
+                padding-left: 2rem;
+                border-radius: 1rem;
+                text-transform: uppercase;
+                transition: 0.5s all;
+
+                &:hover {
+                    padding-right: 2rem;
+                    color: white;
+                    background-color: rgba(orange,0.7);
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+@mixin backgroundCircleSize($cb, $cg) {
+    .background-circle_blue {
+        width: $cb;
+        height: $cb;
+        transform: translate(-30%,-50%);
+    }
+
+    .background-circle_green {
+        width: $cg;
+        height: $cg;
+        transform: translate(30%,40%);
+    }
+}
