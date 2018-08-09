@@ -1,9 +1,8 @@
 import { combineReducers } from 'redux';
-import { itemsHasErrored, itemsFirstLoading } from './items';
-import { items } from './wallet';
+import { itemsHasErrored } from './error';
+import { wallets } from './wallets';
 
 export default combineReducers({
-    items,
-    itemsHasErrored,
-    itemsFirstLoading
+    wallets,
+    itemsHasErrored
 });

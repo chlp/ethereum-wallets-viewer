@@ -1,10 +1,3 @@
-export function itemsFirstLoading(bool) {
-    return {
-        type: 'ITEMS_FIRST_LOADING',
-        isLoading: bool
-    };
-}
-
 export function itemsHasErrored(bool) {
     return {
         type: 'ITEMS_HAS_ERRORED',

@@ -1,4 +1,4 @@
-export function items(state = [], action) {
+export function wallets(state = [], action) {
     switch (action.type) {
         case 'ITEMS_FETCH_DATA_SUCCESS':
             return searchAccount(state, action);

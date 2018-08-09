@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import {itemsFetchData, itemsHasErrored} from '../redux/actions/items'
-import WalletBlock from './walletBlock.jsx'
+import ListWallets from './walletsInfo/listWallets.jsx'
 
 class Form extends Component {
 
@@ -56,21 +56,15 @@ class Form extends Component {
     }
 
     walletsRender = () => {
-        //if(!this.state.itemsLength) return null;
         return (
-            <WalletBlock items = {this.props.items}/>
+            <ListWallets wallets= {this.props.wallets}/>
         )
     }
-
-    componentWillReceiveProps(nextProps) {
-        //console.log(nextProps.hasErrored)
-    }
-
 }
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items,
+        wallets: state.wallets,
         hasErrored: state.itemsHasErrored
     }
 }

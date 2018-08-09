@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import NavBlock from './navBlock.jsx'
+import NavWallets from './navWallets.jsx'
 import {connect} from 'react-redux'
-import {itemsFetchData, itemsFirstLoading, itemsHasErrored, removeWallet} from '../redux/actions/items'
+import {itemsFetchData, itemsHasErrored, removeWallet} from '../../redux/actions/items'
 
-class Wallet extends Component {
+class elemWallets extends Component {
     constructor(props) {
         super(props)
 
@@ -68,7 +68,7 @@ class Wallet extends Component {
 
     getMore = () => {
         if(!this.state.isOpen) return null
-        return <NavBlock item = {this.props.item} />
+        return <NavWallets item = {this.props.item} />
     }
 
     fetchRequest = wallet => {
@@ -116,7 +116,7 @@ class Wallet extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        items: state.items,
+        wallets: state.wallets,
         hasErrored: state.itemsHasErrored
     }
 }
@@ -128,4 +128,4 @@ const mapDispatchProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchProps)(Wallet);
+export default connect(mapStateToProps, mapDispatchProps)(elemWallets);

@@ -1,7 +1,7 @@
 import React from 'react'
 import TimeAgo from 'timeago-react';
 
-export default function TokensList(props) {
+export default function elemTokens(props) {
     return (
         <li>
             <p className="from">From: {props.item.from}</p>
