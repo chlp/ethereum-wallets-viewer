@@ -68,7 +68,7 @@
     @include backgroundCircleSize(150rem, 100rem)
 
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(70rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(70rem, 1fr));
     }
 };
 
@@ -80,7 +80,7 @@
     @include backgroundCircleSize(140rem, 100rem)
 
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(70rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(70rem, 1fr));
     }
 };
 
@@ -92,7 +92,7 @@
     @include backgroundCircleSize(140rem, 100rem)
 
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(70rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(70rem, 1fr));
     }
 }
 
@@ -106,7 +106,7 @@
     @include backgroundCircleSize(110rem, 70rem)
 
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(57rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(57rem, 1fr));
     }
 }
 
@@ -116,12 +116,12 @@
     @include backgroundCircleSize(100rem, 50rem)
 
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(57rem, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(57rem, 1fr));
     }
 }
 
 @media(max-width:37.5em) {
     .grid {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     }
 }
